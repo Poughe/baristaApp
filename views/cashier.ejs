@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Cashier</title>
+		<!--Font Styles-->
+		
+		<!-- external CSS link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		<!--<link rel="stylesheet" href="css/normalize.css">-->
+		<!--<link rel="stylesheet" href="css/reset.css">-->
+		<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/orderReceipt.css">
+        <!-- Boxicons CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	</head>
+	
+    <body>  
+        <div class="bg-dark p-3">
+            <div class="row mx-0 py-3 bg-secondary">
+                <!--Navigation Bar-->
+                <div class="container my-2">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <small class="text-light" id="displayDateTime" text-muted></small>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Barista Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Log-Out</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Card Categories-->
+                <div class="col-sm-8">                    
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body">
+                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active rounded-pill" id="pills-hotDrink-tab" data-bs-toggle="pill" data-bs-target="#pills-hotDrink" type="button" role="tab" aria-controls="pills-hotDrink" aria-selected="true">Hot Beverages</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link rounded-pill" id="pills-coldDrink-tab" data-bs-toggle="pill" data-bs-target="#pills-coldDrink" type="button" role="tab" aria-controls="pills-coldDrink" aria-selected="false">Cold Beverages</button>
+                                </li>
+                                <li class="nav-item d-none" role="presentation">
+                                    <button class="nav-link rounded-pill" id="pills-checkOut-tab" data-bs-toggle="pill" data-bs-target="#pills-checkOut" type="button" role="tab" aria-controls="pills-checkOut" aria-selected="false">Check Out</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>             
+                    <!--Menu Items-->
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-hotDrink" role="tabpanel" aria-labelledby="pills-hotDrink-tab">
+                            <div class="row row-cols-1 row-cols-md-4 g-4">
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/coffeeOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Coffee</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="coffeeS" autocomplete="off" onclick="orderBasket('Small Coffee', 1.79);">
+                                                <label class="btn btn-outline-primary" for="coffeeS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="coffeeM" autocomplete="off" onclick="orderBasket('Medium Coffee', 1.99);">
+                                                <label class="btn btn-outline-primary" for="coffeeM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="coffeeL" autocomplete="off" onclick="orderBasket('Large Coffee', 2.10);">
+                                                <label class="btn btn-outline-primary" for="coffeeL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/decafOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Decaf</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="decafS" autocomplete="off" onclick="orderBasket('Small Decaf', 1.79);">
+                                                <label class="btn btn-outline-primary" for="decafS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="decafM" autocomplete="off" onclick="orderBasket('Medium Decaf', 1.99);">
+                                                <label class="btn btn-outline-primary" for="decafM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="decafL" autocomplete="off" onclick="orderBasket('Large Decaf', 2.10);">
+                                                <label class="btn btn-outline-primary" for="decafL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/hotTeaOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Tea</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="teaS" autocomplete="off" onclick="orderBasket('Small Tea', 1.30);">
+                                                <label class="btn btn-outline-primary" for="teaS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="teaM" autocomplete="off" onclick="orderBasket('Medium Tea', 1.50);">
+                                                <label class="btn btn-outline-primary" for="teaM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="teaL" autocomplete="off" onclick="orderBasket('Large Tea', 1.70);">
+                                                <label class="btn btn-outline-primary" for="teaL">L</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/chaiLatteOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Chai Latte</h5>
+
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="chaiS" autocomplete="off" onclick="orderBasket('Small Chai Latte', 2.30);">
+                                                <label class="btn btn-outline-primary" for="chaiS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="chaiM" autocomplete="off" onclick="orderBasket('Medium Chai Latte', 2.50);">
+                                                <label class="btn btn-outline-primary" for="chaiM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="chaiL" autocomplete="off" onclick="orderBasket('Large Chai Latte', 2.70);">
+                                                <label class="btn btn-outline-primary" for="chaiL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/espressOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Espresso</h5>
+
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="espressoS" autocomplete="off" onclick="orderBasket('Small Espresso', .55);">
+                                                <label class="btn btn-outline-primary" for="espressoS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="espressoM" autocomplete="off" onclick="orderBasket('Medium Espresso', .75);">
+                                                <label class="btn btn-outline-primary" for="espressoM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="espressoL" autocomplete="off" onclick="orderBasket('Large Espresso', .95);">
+                                                <label class="btn btn-outline-primary" for="espressoL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/hotChocolateOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Hot Chocolate</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="chocolateS" autocomplete="off" onclick="orderBasket('Small Hot Chocolate', 1.79);">
+                                                <label class="btn btn-outline-primary" for="chocolateS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="chocolateM" autocomplete="off" onclick="orderBasket('Medium Hot Chocolate', 1.99);">
+                                                <label class="btn btn-outline-primary" for="chocolateM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="chocolateL" autocomplete="off" onclick="orderBasket('Large Hot Chocolate', 2.19);">
+                                                <label class="btn btn-outline-primary" for="chocolateL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/steamedJuiceOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Steamed Juice</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="steamedS" autocomplete="off" onclick="orderBasket('Small Steamed Juice', 3.30);">
+                                                <label class="btn btn-outline-primary" for="steamedS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="steamedM" autocomplete="off" onclick="orderBasket('Medium Steamed Juice', 3.50);">
+                                                <label class="btn btn-outline-primary" for="steamedM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="steamedL" autocomplete="off" onclick="orderBasket('Large Steamed Juice', 3.70);">
+                                                <label class="btn btn-outline-primary" for="steamedL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card">
+                                        <img draggable="false" src="/images/appleCiderOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                        <div class="card-body bg-success">
+                                            <h5 class="card-title">Apple Cider</h5>
+                                            
+                                            <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                <input type="button" class="btn-check" name="btnbutton" id="ciderS" autocomplete="off" onclick="orderBasket('Small Apple Cider', 2.79);">
+                                                <label class="btn btn-outline-primary" for="ciderS">S</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="ciderM" autocomplete="off" onclick="orderBasket('Medium Apple Cider', 2.99);">
+                                                <label class="btn btn-outline-primary" for="ciderM">M</label>
+                                              
+                                                <input type="button" class="btn-check" name="btnbutton" id="ciderL" autocomplete="off" onclick="orderBasket('Large Apple Cider', 3.19);">
+                                                <label class="btn btn-outline-primary" for="ciderL">L</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <!--End of Menu Items - HOT-->
+
+                            </div>
+                        </div>
+                        <!--Cold Categories-->
+                        <div class="tab-pane fade" id="pills-coldDrink" role="tabpanel" aria-labelledby="pills-coldDrink-tab">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-hotDrink" role="tabpanel" aria-labelledby="pills-hotDrink-tab">
+                                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/icedCoffeeOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Ice Coffee</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceCoffeeS" autocomplete="off" onclick="orderBasket('Small Ice Coffee', 2.09);">
+                                                        <label class="btn btn-outline-primary" for="iceCoffeeS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceCoffeeM" autocomplete="off" onclick="orderBasket('Medium Ice Coffee', 2.29);">
+                                                        <label class="btn btn-outline-primary" for="iceCoffeeM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceCoffeeL" autocomplete="off" onclick="orderBasket('Large Ice Coffee', 2.49);">
+                                                        <label class="btn btn-outline-primary" for="iceCoffeeL">L</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/icedTeaOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Ice Tea</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceTeaS" autocomplete="off" onclick="orderBasket('Small Ice Tea', 1.79);">
+                                                        <label class="btn btn-outline-primary" for="iceTeaS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceTeaM" autocomplete="off" onclick="orderBasket('Medium Ice Tea', 1.99);">
+                                                        <label class="btn btn-outline-primary" for="iceTeaM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="iceTeaL" autocomplete="off" onclick="orderBasket('Large Ice Tea', 2.19);">
+                                                        <label class="btn btn-outline-primary" for="iceTeaL">L</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/frapOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Frappucino</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="frapS" autocomplete="off" onclick="orderBasket('Small Frappucino', 4.00);">
+                                                        <label class="btn btn-outline-primary" for="frapS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="frapM" autocomplete="off" onclick="orderBasket('Medium Frappucino', 4.20);">
+                                                        <label class="btn btn-outline-primary" for="frapM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="frapL" autocomplete="off" onclick="orderBasket('Large Frappucino', 4.40);">
+                                                        <label class="btn btn-outline-primary" for="frapL">L</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/smoothiesOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Smoothies</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="smoothieS" autocomplete="off" onclick="orderBasket('Small Smoothie', 3.09);">
+                                                        <label class="btn btn-outline-primary" for="smoothieS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="smoothieM" autocomplete="off" onclick="orderBasket('Medium Smoothie', 3.29);">
+                                                        <label class="btn btn-outline-primary" for="smoothieM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="smoothieL" autocomplete="off" onclick="orderBasket('Large Smoothie', 3.49);">
+                                                        <label class="btn btn-outline-primary" for="smoothieL">L</label>
+                                                    </div>   
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/lemonadeOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Lemonade</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="lemonadeS" autocomplete="off" onclick="orderBasket('Small Lemonade', 3.09);">
+                                                        <label class="btn btn-outline-primary" for="lemonadeS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="lemonadeM" autocomplete="off" onclick="orderBasket('Medium Lemonade', 3.29);">
+                                                        <label class="btn btn-outline-primary" for="lemonadeM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="lemonadeL" autocomplete="off" onclick="orderBasket('Large Lemonade', 3.49);">
+                                                        <label class="btn btn-outline-primary" for="lemonadeL">L</label>
+                                                    </div>   
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/waterOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Water</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="waterS" autocomplete="off" onclick="orderBasket('Small Water', 1.09);">
+                                                        <label class="btn btn-outline-primary" for="waterS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="waterM" autocomplete="off" onclick="orderBasket('Medium Water', 1.29);">
+                                                        <label class="btn btn-outline-primary" for="waterM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="waterL" autocomplete="off" onclick="orderBasket('Large Water', 1.49);">
+                                                        <label class="btn btn-outline-primary" for="waterL">L</label>
+                                                    </div>   
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/pinkDrinkOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Pink Drink</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="pinkDrinkS" autocomplete="off" onclick="orderBasket('Small Pink Drink', 4.80);">
+                                                        <label class="btn btn-outline-primary" for="pinkDrinkS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="pinkDrinkM" autocomplete="off" onclick="orderBasket('Medium Pink Drink', 5.00);">
+                                                        <label class="btn btn-outline-primary" for="pinkDrinkM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="pinkDrinkL" autocomplete="off" onclick="orderBasket('Large Pink Drink', 5.20);">
+                                                        <label class="btn btn-outline-primary" for="pinkDrinkL">L</label>
+                                                    </div>   
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <img draggable="false" src="/images/mysteryOrder.png" class="bg-info border border-3 border-dark card-img-top" alt="...">
+                                                <div class="card-body bg-success">
+                                                    <h5 class="card-title">Energy Drink</h5>
+                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic button toggle button group">
+                                                        <input type="button" class="btn-check" name="btnbutton" id="energyS" autocomplete="off" onclick="orderBasket('Small Energy Drink', 3.30);">
+                                                        <label class="btn btn-outline-primary" for="energyS">S</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="energyM" autocomplete="off" onclick="orderBasket('Medium Energy Drink', 3.50);">
+                                                        <label class="btn btn-outline-primary" for="energyM">M</label>
+                                                      
+                                                        <input type="button" class="btn-check" name="btnbutton" id="energyL" autocomplete="off" onclick="orderBasket('Large Energy Drink', 3.70);">
+                                                        <label class="btn btn-outline-primary" for="energyL">L</label>
+                                                    </div>   
+
+                                                </div>
+                                            </div>
+                                        </div>
+                          
+                                    </div>
+                                </div>
+
+
+
+                        </div>
+                    </div>
+                    <!--End of Menu Items - COLD -->
+                    <!--Checkout-->
+                    <div class="tab-pane fade" id="pills-checkOut" role="tabpanel" aria-labelledby="pills-checkOut-tab">
+                        <form>
+                            <div class="mb-3">
+                                <label for="inputCustomer" class="form-label text-light">Customer Name</label>
+                                <div class="col-sm-2">
+                                    <input  name="name" type="text" class="form-control" id="inputCustomer" placeholder="OR#88" required autocomplete="off" aria-describedby="textHelp">
+                                </div>
+                                <div id="textHelp" class="form-text text-light">Make sure to get the customer name before sending to our baristas.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label text-light">Total Amount</label>
+                                <div class="col-sm-2">
+                                    <input name="amount" type="number" step="0.01" class="form-control" id="amount" placeholder="Amount" disabled>
+                                </div>
+                            </div>
+                           
+                            <button id="submitOrder" class="btn btn-primary">Submit</button>
+                        </form>
+                          
+
+
+                          
+                    </div>
+
+
+                </div>
+
+            </div>
+                <div class="col-sm-4">
+                    <div class="container border-top border-bottom border-light mb-3">
+                        <img src="/images/logo.png" class="img-fluid" alt="mainLogo">
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="d-flex justify-content-between align-items-center"><span>Order</span><button onclick="orderBasketClear()" class="btn btn-sm btn-danger rounded-pill">Clear</button></h5>
+                            <hr>
+                            <ul name="order" class="list-unstyled" id="orderList"></ul>
+                            <hr>
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <big>Total Items: </big> <big id="totalItems" class="card-text">0</big>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <big>Total Ammount: </big> <big class="fw-bold">$ <span id="totalCost" class="card-text">0.00</span></big>
+                                </li>
+                                <li>
+                                    <hr>
+                                    <button disabled="" id="checkOutButton" onclick="goToCheckOutTab();" class="btn btn-primary btn-lg w-100 rounded-pill">CHECK OUT</button>
+                                </li>        
+                            </ul>
+                                
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                   
+                
+
+
+            </div>
+        </div>
+	
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/c0e668a8ad.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

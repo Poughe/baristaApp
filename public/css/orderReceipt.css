@@ -1,0 +1,7 @@
+#orderList {
+    height: 37vh;
+    overflow-y: auto;
+}
+img{
+    width: 100%;
+}
