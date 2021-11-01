@@ -16,6 +16,7 @@ function markComplete(click) {
             'id': click.currentTarget.id
         })
     }).then(function () {
+        // window.speechSynthesis.speak(new SpeechSynthesisisUtterance(" Order for " + res.value.customer + "is" + "red" + "dee"));
         window.location.reload()
     })
 }
