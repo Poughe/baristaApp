@@ -52,13 +52,13 @@
 				<div class="container">
 					<div class="row">
 					<section class="col box border border-danger">
-						<h3 class="orderTitles text-light">Incoming Orders:</h3>
+						<h3 class="orderTitles text-light text-decoration-underline">Incoming Orders:</h3>
 						<ul class="orders text-light">
 							<% for(var i=0; i<orders.length; i++) {%>
 							<!-- console.log(`i is now ${i}`, orders[i]) -->
 							<% if(!orders[i].completed) { %>
 							<li class="message">
-								<p class="left">Customer Name: <span class="orderItem"><%= orders[i].customerName %></span></p>
+								<p class="left">Customer Name: <span class="orderItem fw-bold"><%= orders[i].customerName %></span></p>
 								<p class="left">Customer Order: <span class="orderItem">
 								<ul>
 									<% const currentOrder = orders[i] %>
@@ -75,7 +75,7 @@
 					</section>
 
 					<section class="col box border border-success">
-						<h3 class="orderTitles text-light" id="complete">Completed Orders:</h3>
+						<h3 class="orderTitles text-light text-decoration-underline" id="complete">Completed Orders:</h3>
 						<ul class="orders text-light">
 							<% for(var i=0; i<orders.length; i++) {%>
 							<% if(orders[i].completed){ %>
