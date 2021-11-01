@@ -50,7 +50,8 @@
 				</div>
 		
 				<div class="container">
-					<section class="box">
+					<div class="row">
+					<section class="col box border border-danger">
 						<h3 class="orderTitles text-light">Incoming Orders:</h3>
 						<ul class="orders text-light">
 							<% for(var i=0; i<orders.length; i++) {%>
@@ -73,7 +74,7 @@
 						</ul>
 					</section>
 
-					<section class="box">
+					<section class="col box border border-success">
 						<h3 class="orderTitles text-light" id="complete">Completed Orders:</h3>
 						<ul class="orders text-light">
 							<% for(var i=0; i<orders.length; i++) {%>
@@ -96,6 +97,7 @@
 						<span><i id="trash" class="fa fa-trash bg-light" aria-hidden="true"></i></span>		
 					</section>
 				</div>
+			</div>
 			</div>
 		</div>
 		
